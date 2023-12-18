@@ -1010,11 +1010,13 @@ def generate_plots(ulog, px4_ulog, db_data, vehicle_data, link_to_3d_page,
     param_changes_button.on_click(param_changes_button_clicked)
 
 
-    user_agent = curdoc().session_context.request.headers.get("User-Agent", "")
-    is_mobile = re.search(r'Mobile|iP(hone|od|ad)|Android|BlackBerry|'
-            r'IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|'
-            r'Minimo|Opera M(obi|ini)|Blazer|Dolfin|'
-            r'Dolphin|Skyfire|Zune', user_agent)
+    #user_agent = curdoc().session_context.request.headers.get("User-Agent", "")
+    #is_mobile = re.search(r'Mobile|iP(hone|od|ad)|Android|BlackBerry|'
+    #        r'IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|'
+    #        r'Minimo|Opera M(obi|ini)|Blazer|Dolfin|'
+    #        r'Dolphin|Skyfire|Zune', user_agent)
+
+    is_mobile = None
 
     jinja_plot_data = []
     for i in range(len(plots)):
