@@ -159,8 +159,8 @@ SDLOG_UTC_OFFSET: {}'''.format(utctimestamp.strftime('%d-%m-%Y %H:%M'), utc_offs
                 'title="'+tooltip+'" '
             table_text_left.append(
                 ('Logging Start '+
-                 '<i '+tooltip+' class="fa fa-question" aria-hidden="true" '+
-                 'style="font-size: larger; color:#666"></i>',
+                 '<i '+tooltip+' class="fa-solid fa-question" aria-hidden="true" '+
+                 'style="color:#666"></i>',
                  '<span style="display:none" id="logging-start-element">'+
                  str(logging_start_time)+'</span>'))
     except:
@@ -556,12 +556,12 @@ def get_logged_messages(ulog, plot_width):
         # in addition to an event with the same message so we can ignore those
         if m.message[-1] == '\t':
             continue
-        messages.append((m.timestamp, time_str(m.timestamp), m.log_level_str(), m.message))
+        messages.append((m.timestamp, m.log_level_str(), m.message))
 
     messages = sorted(messages, key=lambda m: m[0])
 
-    log_times, log_times_str, log_levels, log_messages = \
-        zip(*messages) if len(messages) > 0 else ([],[],[],[])
+    log_times, log_levels, log_messages = zip(*messages) if len(messages) > 0 else ([],[],[])
+    log_times_str = [time_str(t) for t in log_times]
     log_data = {
         'times': log_times_str,
         'levels': log_levels,
